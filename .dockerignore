@@ -1,0 +1,10 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+data
+dist
+*.db
+*.db-shm
+*.db-wal
