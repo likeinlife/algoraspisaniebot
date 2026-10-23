@@ -27,7 +27,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("open sqlite: %v", err)
 	}
-	defer db.Close()
+	defer func() {
+		if err := db.Close(); err != nil {
+			log.Printf("close sqlite: %v", err)
+		}
+	}()
 
 	if raw := strings.TrimSpace(os.Getenv("TELEGRAM_CHAT_ID")); raw != "" {
 		chatID, err := strconv.ParseInt(raw, 10, 64)

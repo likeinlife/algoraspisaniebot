@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: gofmt
+        name: gofmt
+        entry: gofmt -w
+        language: system
+        types: [go]
+
+      - id: golangci-lint
+        name: golangci-lint
+        entry: golangci-lint run
+        language: system
+        files: '(^|/)(go\.mod|go\.sum|\.golangci\.yml)$|\.go$'
+        pass_filenames: false
